@@ -1,0 +1,102 @@
+/* style.css */
+
+/*
+  Estilos Globais
+*/
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/*
+  Estilos do Formulário
+*/
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Aumenta a largura máxima para acomodar duas colunas */
+}
+
+
+/* Container Flex para agrupar Label e Input 
+  Adicionei uma classe 'form-group' ao HTML, veja a sugestão abaixo!
+*/
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Container para os campos que ficarão LADO A LADO 
+*/
+.flex-row {
+    display: flex;
+    gap: 20px; /* Espaço entre os campos */
+}
+
+/* Define a largura de cada item dentro da linha flex 
+  (ex: CEP e Número, ou Cidade e Estado)
+*/
+.flex-row .form-group {
+    flex: 1; /* Garante que os grupos ocupem o mesmo espaço */
+    min-width: 0; /* Correção para flexbox */
+}
+
+/* Estilos dos Labels e Inputs 
+*/
+label {
+    display: block;
+    margin-bottom: 5px; /* Espaço menor antes do input */
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"] /* Adicionado o tipo email por segurança */ {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/*
+  Estilos do Botão de Envio
+*/
+input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 25px; /* Mais espaço acima do botão */
+    width: 100%; 
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
