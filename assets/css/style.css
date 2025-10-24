@@ -65,8 +65,7 @@ label {
     color: #555;
 }
 
-input[type="text"],
-input[type="email"] /* Adicionado o tipo email por segurança */ {
+input/* Adicionado o tipo email por segurança */ {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;

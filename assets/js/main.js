@@ -1,59 +1,59 @@
 const inputCep = document.getElementById('CEP');
 const inputRua = document.getElementById('rua');
+const inputBairro = document.getElementById('bairro');
 const inputCidade = document.getElementById('cidade');
 const inputEstado = document.getElementById('estado');
-const inputBairro = document.getElementById('bairro');
 
-const buscarCepComValidacao = async () => {
-    const cepFormatado = inputCep.value.replace(/\D/g, '');
+const buscarCep = async () => {
 
-    if (inputCep.value === '') {
+    // getUrl também usando async/await
+    const getUrl = async (cep) => {
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+
+    const preencheFormulario = (data) => {
+        inputRua.value = data.logradouro || '';
+        inputBairro.value = data.bairro || '';
+        inputCidade.value = data.localidade || '';
+        inputEstado.value = data.uf || '';
+    }
+
+    const limpaFormulario = () => {
         inputRua.value = '';
+        inputBairro.value = '';
         inputCidade.value = '';
         inputEstado.value = '';
-        inputBairro.value = '';
+    }
+
+    const cepFormatado = inputCep.value.replace(/\D/g, '');
+
+    if (cepFormatado === '') {
+        limpaFormulario();
         return;
     }
 
     if (cepFormatado.length !== 8) {
-        inputRua.value = '';
-        inputCidade.value = '';
-        inputEstado.value = '';
-        inputBairro.value = '';
-
-        alert("Formato de CEP inválido.");
+        limpaFormulario();
+        alert('Formato de CEP invalido!');
         return;
     }
 
-    const url = `https://viacep.com.br/ws/${cepFormatado}/json/`;
-
     try {
-
-        const response = await fetch(url);
-        const data = await response.json();
+        const data = await getUrl(cepFormatado);
 
         if (data.erro) {
-
-            inputRua.value = '';
-            inputCidade.value = '';
-            inputEstado.value = '';
-            inputBairro.value = '';
-
-            alert("CEP não encontrado. Por favor, preencha o formulario manualmente.");
+            limpaFormulario();
+            alert('CEP não encontrado! Preencha o formulario manualmente');
         } else {
-
-            inputRua.value = data.logradouro || '';
-            inputCidade.value = data.localidade || '';
-            inputEstado.value = data.uf || '';
-            inputBairro.value = data.bairro || '';
+            preencheFormulario(data);
         }
-
     } catch (error) {
-
         console.error('Erro de conexão ao buscar CEP:', error);
         alert("Erro de conexão com o servidor. Verifique sua internet.");
     }
-};
+}
 
-
-inputCep.addEventListener('focusout', buscarCepComValidacao);
+inputCep.addEventListener('focusout', buscarCep);
