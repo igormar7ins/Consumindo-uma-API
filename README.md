@@ -1,24 +1,31 @@
-# Consulta de Endereço por CEP
+# 📦 Cadastro de Endereço com Consulta de CEP
 
-Este é um projeto simples de uma página web que permite ao usuário inserir um CEP (Código de Endereçamento Postal) brasileiro e ter os campos de endereço (rua, bairro, cidade e estado) preenchidos automaticamente.
+Este projeto é um formulário de cadastro simples que demonstra o consumo de uma API de consulta de CEP (Código de Endereçamento Postal) para preencher automaticamente os campos de endereço.
 
-## Funcionalidades
+## 🌟 Funcionalidades
 
-- **Preenchimento Automático de Endereço:** Ao digitar um CEP válido e sair do campo, o sistema busca as informações do endereço e as insere nos campos correspondentes.
-- **Validação de CEP:** O sistema verifica se o CEP digitado possui 8 dígitos numéricos.
-- **Tratamento de Erro:** Caso o CEP seja inválido, não seja encontrado ou ocorra um erro de conexão, o usuário é notificado por um alerta.
+* **Consulta de CEP:** Ao preencher o campo de CEP e sair dele (`focusout`), o JavaScript faz uma requisição para a API **ViaCEP**.
+* **Preenchimento Automático:** Se o CEP for válido e encontrado, os campos *Rua*, *Bairro*, *Cidade* e *Estado* são preenchidos automaticamente.
+* **Validação Simples:** Verifica se o campo CEP está vazio ou se possui um número de caracteres diferente de 8.
+* **Tratamento de Erros:** Exibe alertas para CEP não encontrado ou falhas na conexão com a API.
+* **Design Responsivo:** O formulário possui um layout flexível para melhor visualização.
 
-## Como Usar
+## 🛠️ Tecnologias Utilizadas
 
-1.  Clone ou baixe este repositório.
-2.  Abra o arquivo `index.html` em qualquer navegador de internet.
-3.  Digite um CEP válido no campo "CEP".
-4.  Clique fora do campo ou pressione a tecla Tab.
-5.  Os campos de rua, bairro, cidade e estado serão preenchidos com os dados retornados pela API.
+* **HTML5:** Estrutura básica do formulário (`index.html`).
+* **CSS3:** Estilização do formulário e layout flexível (`style.css`).
+* **JavaScript (ES6+):** Lógica para manipulação do DOM e requisições assíncronas à API (`main.js`).
 
-## Tecnologias Utilizadas
+## ⚙️ Como Executar o Projeto
 
-- **HTML5:** Para a estrutura da página.
-- **CSS3:** Para a estilização básica e layout.
-- **JavaScript:** Para a manipulação do DOM, validações e a lógica de requisição à API.
-- **ViaCEP API:** A API pública utilizada para obter os dados de endereço a partir do CEP.
+Este é um projeto **Front-end puro** e pode ser executado diretamente no seu navegador.
+
+1.  **Clone o repositório** (ou baixe os arquivos `index.html`, `style.css` e `main.js`).
+2.  **Crie as pastas** `assets/css` e `assets/js`.
+3.  **Coloque os arquivos** nos seus respectivos locais:
+    * `index.html` na raiz.
+    * `style.css` em `assets/css/`.
+    * `main.js` em `assets/js/`.
+4.  **Abra o arquivo `index.html`** no seu navegador de preferência.
+
+Alternativamente, você pode usar uma extensão de servidor local (como *Live Server* no VS Code) para ter um ambiente de desenvolvimento mais robusto.
